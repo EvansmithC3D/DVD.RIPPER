@@ -54,6 +54,20 @@ This shows all titles with runtime, size, and audio track count.
 ./finalize.sh amadeus_b_tmp "Amadeus (1984)" 2
 ```
 
+### 5. Merge multi-part movies (if applicable)
+
+If a movie was ripped as part1 + part2 (flipper disc or 2-disc set), merge them into a single file after both parts are finalized:
+
+```bash
+./merge.sh "Amadeus (1984)"
+```
+
+This produces `Amadeus (1984).mkv` and prompts to delete the part files.
+
+**When to merge:** Always merge multi-part rips unless the user explicitly wants to keep them as separate parts. A single file gives better Jellyfin compatibility (one library entry, uninterrupted playback, correct runtime metadata).
+
+**When NOT to merge:** If the user says to skip merging, or if the two parts have mismatched video/audio formats (merge.sh will error — report this to the user).
+
 ## Jellyfin Naming Conventions
 
 | Type | Format | Example |
